@@ -26,7 +26,7 @@ const PROJECTS = [
     name: 'Portfolio v1',
     desc: 'First portfolio site. Scroll-based dark design with terminal animations.',
     tags: ['React', 'Vite', 'CSS'],
-    github: 'https://github.com/just-sid04',
+    github: 'https://github.com/just-sid04/Portfolio',
     live: null,
   },
 ];
