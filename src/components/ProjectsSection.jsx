@@ -23,6 +23,46 @@ const PROJECTS = [
     gradient: 'linear-gradient(135deg, rgba(79, 142, 247, 0.15), rgba(155, 89, 245, 0.08))',
   },
   {
+    id: 'curalink',
+    featured: false,
+    emoji: '🧬',
+    title: 'CuraLink',
+    tagline: 'AI Medical Research Assistant',
+    description:
+      'A full-stack medical research assistant that runs parallel real-time queries across PubMed, ClinicalTrials.gov, and OpenAlex — then synthesizes findings using OpenAI into structured, actionable summaries.',
+    stack: ['React', 'TypeScript', 'Node.js', 'Express', 'OpenAI', 'PubMed API', 'ClinicalTrials API', 'OpenAlex', 'Tailwind CSS', 'Radix UI', 'Vite'],
+    highlights: [
+      'Parallel API fetching across 3 medical databases',
+      'OpenAI-powered summarization engine',
+      'Real-time streaming research results',
+      'Rate-limiting & Helmet security middleware',
+      'TypeScript frontend with Zod validation',
+    ],
+    github: 'https://github.com/siddharthbhamare/curalink',
+    color: '#00d4ff',
+    gradient: 'linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(79, 142, 247, 0.08))',
+  },
+  {
+    id: 'golfdraw',
+    featured: false,
+    emoji: '⛳',
+    title: 'GolfDraw',
+    tagline: 'Golf Prize & Lottery Platform',
+    description:
+      'A production-ready golf-themed lottery web app featuring subscription management, score tracking, a sophisticated draw engine, charity donation integration, and a full admin dashboard — deployed on Vercel with Supabase.',
+    stack: ['React', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Framer Motion', 'Zustand', 'React Query', 'React Router', 'Vite'],
+    highlights: [
+      'Subscription & draw engine',
+      'Admin dashboard with RLS policies',
+      'Charity donation integration',
+      'Score tracking system',
+      'Deployed on Vercel',
+    ],
+    github: 'https://github.com/siddharthbhamare/golfdraw',
+    color: '#22c55e',
+    gradient: 'linear-gradient(135deg, rgba(34, 197, 94, 0.15), rgba(0, 212, 255, 0.08))',
+  },
+  {
     id: 'portfolio',
     featured: false,
     emoji: '🚌',
@@ -30,7 +70,7 @@ const PROJECTS = [
     tagline: 'Journey-Themed Personal Portfolio',
     description:
       'An interactive portfolio built with React + Framer Motion, featuring a "bus journey" metaphor, custom cursor, animated bus-route navigation, and scroll-triggered reveals.',
-    stack: ['React', 'Framer Motion', 'Tailwind CSS', 'Vite'],
+    stack: ['React', 'Framer Motion', 'Vite'],
     highlights: [
       'Custom scroll-based storytelling',
       'Animated bus-route navigation',
@@ -200,75 +240,57 @@ export default function ProjectsSection() {
           </div>
         </motion.div>
 
-        {/* Other projects */}
-        <div className="grid sm:grid-cols-2 gap-6">
-          {/* Portfolio card (this site) */}
-          <motion.div
-            className="project-card glass-card p-6"
-            initial={{ opacity: 0, y: 40 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            style={{ background: PROJECTS[1].gradient, border: '1px solid rgba(155, 89, 245, 0.2)' }}
-          >
-            <div className="flex items-center justify-between mb-4">
-              <div
-                className="w-10 h-10 rounded-xl flex items-center justify-center text-xl"
-                style={{ background: 'rgba(155, 89, 245, 0.1)' }}
-              >
-                {PROJECTS[1].emoji}
-              </div>
-              <a
-                href={PROJECTS[1].github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs no-underline px-3 py-1.5 rounded-full"
-                style={{ background: 'rgba(155, 89, 245, 0.1)', color: '#9b59f5', border: '1px solid rgba(155, 89, 245, 0.2)' }}
-              >
-                ⌨️ Source
-              </a>
-            </div>
-            <h3 className="font-semibold mb-1" style={{ color: 'var(--text-primary)', fontFamily: 'Space Grotesk, sans-serif' }}>
-              {PROJECTS[1].title}
-            </h3>
-            <p className="text-xs mb-4" style={{ color: 'var(--accent-cyan)' }}>{PROJECTS[1].tagline}</p>
-            <p className="text-sm leading-relaxed mb-4" style={{ color: 'var(--text-secondary)' }}>
-              {PROJECTS[1].description}
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {PROJECTS[1].stack.map(tech => (
-                <span key={tech} className="tech-tag" style={{ color: '#9b59f5', borderColor: 'rgba(155, 89, 245, 0.2)' }}>
-                  {tech}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Coming soon card */}
-          <motion.div
-            className="glass-card p-6 flex flex-col items-center justify-center text-center"
-            initial={{ opacity: 0, y: 40 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            style={{ border: '1px dashed rgba(255,255,255,0.1)', minHeight: '200px' }}
-          >
-            <div className="text-4xl mb-4">🚧</div>
-            <h3 className="font-semibold mb-2" style={{ color: 'var(--text-primary)', fontFamily: 'Space Grotesk, sans-serif' }}>
-              Next Stop Loading...
-            </h3>
-            <p className="text-sm" style={{ color: 'var(--text-secondary)' }}>
-              Something exciting is being built. Stay tuned for the next project.
-            </p>
-            <div
-              className="mt-4 text-xs px-4 py-2 rounded-full"
-              style={{
-                background: 'rgba(255,255,255,0.04)',
-                color: 'var(--text-secondary)',
-                fontFamily: 'JetBrains Mono, monospace',
-              }}
+        {/* Other projects — dynamically rendered */}
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {PROJECTS.filter(p => !p.featured).map((p, i) => (
+            <motion.div
+              key={p.id}
+              className="project-card glass-card p-6 flex flex-col"
+              initial={{ opacity: 0, y: 40 }}
+              animate={inView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.4 + i * 0.1 }}
+              style={{ background: p.gradient, border: `1px solid ${p.color}33` }}
             >
-              coming_soon.exe
-            </div>
-          </motion.div>
+              <div className="flex items-center justify-between mb-4">
+                <div
+                  className="w-10 h-10 rounded-xl flex items-center justify-center text-xl flex-shrink-0"
+                  style={{ background: `${p.color}1A` }}
+                >
+                  {p.emoji}
+                </div>
+                <a
+                  href={p.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs no-underline px-3 py-1.5 rounded-full"
+                  style={{ background: `${p.color}1A`, color: p.color, border: `1px solid ${p.color}33` }}
+                >
+                  ⌨️ Source
+                </a>
+              </div>
+              <h3
+                className="font-semibold mb-1"
+                style={{ color: 'var(--text-primary)', fontFamily: 'Space Grotesk, sans-serif' }}
+              >
+                {p.title}
+              </h3>
+              <p className="text-xs mb-3" style={{ color: p.color }}>{p.tagline}</p>
+              <p className="text-sm leading-relaxed mb-4 flex-1" style={{ color: 'var(--text-secondary)' }}>
+                {p.description}
+              </p>
+              <div className="flex flex-wrap gap-2 mt-auto">
+                {p.stack.map(tech => (
+                  <span
+                    key={tech}
+                    className="tech-tag"
+                    style={{ color: p.color, borderColor: `${p.color}33` }}
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

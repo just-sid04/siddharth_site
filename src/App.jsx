@@ -7,22 +7,30 @@ const PROJECTS = [
   {
     num: '_01.',
     name: 'ProConnect',
-    desc: 'Full-featured service marketplace connecting customers with providers. Real-time booking, in-app chat, payments, and reviews.',
-    tags: ['Flutter', 'Dart', 'Supabase', 'Realtime'],
+    desc: 'Full-featured service marketplace connecting customers with providers. Real-time booking, in-app chat, Razorpay payments, multi-role auth, and RLS-secured Supabase backend.',
+    tags: ['Flutter', 'Dart', 'Supabase', 'PostgreSQL', 'Razorpay', 'Realtime'],
     github: 'https://github.com/just-sid04/proconnect-app',
     live: null,
     featured: true,
   },
   {
     num: '_02.',
-    name: 'Finance Tracker',
-    desc: 'Personal finance management app with charts, budget categories, and expense insights.',
-    tags: ['Flutter', 'Firebase', 'Dart'],
-    github: 'https://github.com/just-sid04/bill-split',
+    name: 'CuraLink',
+    desc: 'AI-powered medical research assistant. Runs parallel queries across PubMed, ClinicalTrials.gov, and OpenAlex APIs and synthesizes findings using OpenAI into structured summaries.',
+    tags: ['React', 'TypeScript', 'Node.js', 'Express', 'OpenAI', 'PubMed API', 'ClinicalTrials API', 'OpenAlex', 'Tailwind CSS', 'Vite'],
+    github: 'https://github.com/just-sid04/curalink',
     live: null,
   },
   {
     num: '_03.',
+    name: 'GolfDraw',
+    desc: 'Production-ready golf-themed lottery platform with subscription management, score tracking, draw engine, charity integration, and a full admin dashboard. Deployed on Vercel.',
+    tags: ['React', 'Supabase', 'PostgreSQL', 'Tailwind CSS', 'Framer Motion', 'Zustand', 'React Query', 'React Router', 'Vite'],
+    github: 'https://github.com/just-sid04/golfdraw',
+    live: null,
+  },
+  {
+    num: '_04.',
     name: 'Portfolio v1',
     desc: 'First portfolio site. Scroll-based dark design with terminal animations.',
     tags: ['React', 'Vite', 'CSS'],
@@ -313,7 +321,7 @@ export default function App() {
             </div>
             <div className="hero-stats reveal" style={{transitionDelay:'0.3s'}}>
               <div>
-                <div className="stat-number">3+</div>
+                <div className="stat-number">4+</div>
                 <div className="stat-label">Projects Built</div>
               </div>
               <div>

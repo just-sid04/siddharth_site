@@ -139,7 +139,7 @@ export default function HeroSection() {
             className="flex flex-wrap gap-6 py-2"
           >
             {[
-              { value: '3+', label: 'Projects Built' },
+              { value: '4+', label: 'Projects Built' },
               { value: '2+', label: 'Years Coding' },
               { value: '∞', label: 'Problems Solved' },
             ].map(stat => (
